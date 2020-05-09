@@ -25,12 +25,12 @@ if [ "$TRAVIS" = true ]; then
     openssl aes-256-cbc \
         -K $encrypted_72034960ad12_key \
         -iv $encrypted_72034960ad12_iv \
-        -in open3d-ci-sa-key.json.enc \
-        -out open3d-ci-sa-key.json \
+        -in ${curr_dir}/open3d-ci-sa-key.json.enc \
+        -out ${curr_dir}/open3d-ci-sa-key.json \
         -d
 
     # Autenticate with Google cloud
-    gcloud auth activate-service-account --key-file open3d-ci-sa-key.json
+    gcloud auth activate-service-account --key-file ${curr_dir}/open3d-ci-sa-key.json
     gcloud config set project isl-buckets
 fi
 
